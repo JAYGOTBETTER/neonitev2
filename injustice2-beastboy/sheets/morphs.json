@@ -1,0 +1,27 @@
+{
+  "sheet": "morphs",
+  "about": "One row per animal morph. A morph hides Beast Boy for its duration while the game's own tag-assist fighter (real model from the player's Injustice 2 install) performs the attack, then Beast Boy reappears.",
+  "columns": ["id", "displayName", "assistCharacter", "padButton", "key", "hiddenScale", "durationMs", "cooldownMs"],
+  "rows": [
+    {
+      "id": "GorillaSlam",
+      "displayName": "Gorilla Slam",
+      "assistCharacter": "GorillaGrodd",
+      "padButton": "RIGHT_THUMB",
+      "key": "P",
+      "hiddenScale": 0.01,
+      "durationMs": 1500,
+      "cooldownMs": 6000,
+      "_verify": {
+        "id": "design",
+        "displayName": "design",
+        "assistCharacter": "I2Hook Menu.cpp szTagCharacters: GorillaGrodd",
+        "padButton": "Steam discussion app/627270: Multiverse assist is called with RS (right stick click)",
+        "key": "Steam discussion app/627270: keyboard P calls the assist",
+        "hiddenScale": "I2Hook README: player scale is visual only",
+        "durationMs": "UNVERIFIED: must match Grodd assist on-screen time in game",
+        "cooldownMs": "UNVERIFIED: must match the game's assist cooldown so Beast Boy never vanishes without the gorilla"
+      }
+    }
+  ]
+}

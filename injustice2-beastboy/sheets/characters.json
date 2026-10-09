@@ -1,0 +1,23 @@
+{
+  "sheet": "characters",
+  "about": "One row per modded fighter. Beast Boy takes over an existing roster slot; the base fighter is matched by the character definition name the game stores for each player (e.g. CHAR_Cheetah_MSTR).",
+  "columns": ["id", "displayName", "baseCharacterMatch", "lookModifier", "morphs", "appliesTo"],
+  "rows": [
+    {
+      "id": "BeastBoy",
+      "displayName": "Beast Boy",
+      "baseCharacterMatch": "Cheetah",
+      "lookModifier": "GreenLanternsLight",
+      "morphs": ["GorillaSlam"],
+      "appliesTo": "any_slot",
+      "_verify": {
+        "id": "design",
+        "displayName": "design",
+        "baseCharacterMatch": "I2Hook Menu.cpp character list: CHAR_Cheetah_MSTR / CHAR_Cheetah_A",
+        "lookModifier": "UNVERIFIED: name is in I2Hook ModifierList.cpp (Multiverse modifier); the green look it gives Cheetah must be seen in game",
+        "morphs": "references morphs.json",
+        "appliesTo": "design (solo vs CPU: whichever side picks Cheetah is Beast Boy)"
+      }
+    }
+  ]
+}

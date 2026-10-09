@@ -1,0 +1,4 @@
+Ultimate ASI Loader v9.7.4 (x64) by ThirteenAG, MIT License.
+https://github.com/ThirteenAG/Ultimate-ASI-Loader/releases/download/v9.7.4/Ultimate-ASI-Loader_x64.zip
+zip sha256 8272d83b2692662098746f2d0ad0e2d85f3c8358ab1d63f75fbe835c2c8135fd
+Only dinput8.dll is shipped; it loads zBeastBoy.asi from Binaries\Retail.

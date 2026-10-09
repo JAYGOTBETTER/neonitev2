@@ -1,0 +1,208 @@
+{
+  "sheet": "hooks",
+  "about": "One row per address the mod finds in Injustice2.exe by byte pattern. kind: callsite = an E8 call we redirect to our handler and then call the original; function = engine function we call; riprel = a RIP-relative global.",
+  "columns": [
+    "id",
+    "kind",
+    "pattern",
+    "offset",
+    "purpose"
+  ],
+  "rows": [
+    {
+      "id": "ProcDispatchCall",
+      "kind": "callsite",
+      "pattern": "E8 ? ? ? ? 48 8B 0D ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 48 8B 0D ? ? ? ? E8",
+      "offset": 0,
+      "purpose": "per-frame tick on the game thread",
+      "_verify": {
+        "id": "design",
+        "kind": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "pattern": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "offset": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "purpose": "design",
+        "found_in_running_game": "UNVERIFIED: pattern scan result is logged to BeastBoy.log at launch"
+      }
+    },
+    {
+      "id": "FightStartCall",
+      "kind": "callsite",
+      "pattern": "E8 ? ? ? ? 33 C0 48 8D 54 24 ? 45 33 C9 48 89 44 24 ? B9 ? ? ? ? 48 89 44 24 ? 48 89 44 24",
+      "offset": 0,
+      "purpose": "new fight is set up; characters chosen, objects not spawned yet",
+      "_verify": {
+        "id": "design",
+        "kind": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "pattern": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "offset": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "purpose": "design",
+        "found_in_running_game": "UNVERIFIED: pattern scan result is logged to BeastBoy.log at launch"
+      }
+    },
+    {
+      "id": "AddModifiersCall",
+      "kind": "callsite",
+      "pattern": "E8 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 85 C0 74 13 B9 ? ? ? ? E8 ? ? ? ? E8 ? ? ? ? 85 C0 75 ED E8 ? ? ? ? 33 D2 44 8D 42 01 48 8B 0D ? ? ? ? E8 ? ? ? ? BA ? ? ? ? 44 8B C2 48 8B 0D ? ? ? ? E8",
+      "offset": 0,
+      "purpose": "fighters spawned; modifiers may be attached",
+      "_verify": {
+        "id": "design",
+        "kind": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "pattern": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "offset": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "purpose": "design",
+        "found_in_running_game": "UNVERIFIED: pattern scan result is logged to BeastBoy.log at launch"
+      }
+    },
+    {
+      "id": "GameInfoPtr",
+      "kind": "riprel",
+      "pattern": "48 8B 15 ? ? ? ? 45 33 C9 48 81 C2 ? ? ? ? B9 07 00 FF 00 45 8D 41 04 E8 ? ? ? ? 33 C0",
+      "offset": 3,
+      "purpose": "global FGGameInfo*",
+      "_verify": {
+        "id": "design",
+        "kind": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "pattern": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "offset": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "purpose": "design",
+        "found_in_running_game": "UNVERIFIED: pattern scan result is logged to BeastBoy.log at launch"
+      }
+    },
+    {
+      "id": "GameInfo_GetInfo",
+      "kind": "function",
+      "pattern": "83 FA 03 77 0C 48 63 C2 48 8B 84 C1 ? ? ? ? C3",
+      "offset": 0,
+      "purpose": "PlayerInfo* (FGGameInfo*, int player)",
+      "_verify": {
+        "id": "design",
+        "kind": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "pattern": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "offset": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "purpose": "design",
+        "found_in_running_game": "UNVERIFIED: pattern scan result is logged to BeastBoy.log at launch"
+      }
+    },
+    {
+      "id": "PlayerInfo_GetObj",
+      "kind": "function",
+      "pattern": "40 53 48 83 EC 20 8B 41 28 3D ? ? ? ? 73 40 8B D0 4C 8D 05 ? ? ? ? 8B 41 2C 41 39 04 90 75 2E 48 8B 59 20 48 85 DB 74 25 48 8B 03 48 8B CB",
+      "offset": 0,
+      "purpose": "MKCharacter* (PlayerInfo*)",
+      "_verify": {
+        "id": "design",
+        "kind": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "pattern": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "offset": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "purpose": "design",
+        "found_in_running_game": "UNVERIFIED: pattern scan result is logged to BeastBoy.log at launch"
+      }
+    },
+    {
+      "id": "Character_SetScale",
+      "kind": "function",
+      "pattern": "48 8B 49 20 48 85 C9 74 09 48 85 D2 0F 85 ? ? ? ? C3",
+      "offset": 0,
+      "purpose": "void (MKCharacter*, FVector*) visual scale",
+      "_verify": {
+        "id": "design",
+        "kind": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "pattern": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "offset": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "purpose": "design",
+        "found_in_running_game": "UNVERIFIED: pattern scan result is logged to BeastBoy.log at launch"
+      }
+    },
+    {
+      "id": "Modifier_Construct",
+      "kind": "function",
+      "pattern": "48 89 4C 24 ? 57 48 83 EC 40 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 48 8B F2 48 8B D9 E8 ? ? ? ? 90",
+      "offset": 0,
+      "purpose": "void (Modifier*, const char* name)",
+      "_verify": {
+        "id": "design",
+        "kind": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "pattern": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "offset": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "purpose": "design",
+        "found_in_running_game": "UNVERIFIED: pattern scan result is logged to BeastBoy.log at launch"
+      }
+    },
+    {
+      "id": "Modifier_Activate",
+      "kind": "function",
+      "pattern": "48 8B C4 57 48 83 EC 70 48 C7 40 ? ? ? ? ? 48 89 58 08 48 89 70 10 48 8B FA 48 8B D9 48 8B 01 BA ? ? ? ? FF 50 28 48 8B F0 48 85 C0",
+      "offset": 0,
+      "purpose": "void (Modifier*, MKCharacter*)",
+      "_verify": {
+        "id": "design",
+        "kind": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "pattern": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "offset": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "purpose": "design",
+        "found_in_running_game": "UNVERIFIED: pattern scan result is logged to BeastBoy.log at launch"
+      }
+    },
+    {
+      "id": "TagAssist_Construct",
+      "kind": "function",
+      "pattern": "40 53 48 83 EC 20 48 8B D9 E8 ? ? ? ? 48 8D 05 ? ? ? ? 48 89 03 B8 ? ? ? ? 48 C7 43 ? ? ? ? ? C7 43 ? ? ? ? ? 66 89 43 38 48 8B C3 48 83 C4 20 5B C3",
+      "offset": 0,
+      "purpose": "void (TagAssistModifier*, const char* character)",
+      "_verify": {
+        "id": "design",
+        "kind": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "pattern": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "offset": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "purpose": "design",
+        "found_in_running_game": "UNVERIFIED: pattern scan result is logged to BeastBoy.log at launch"
+      }
+    },
+    {
+      "id": "TagAssist_ActivateInfo",
+      "kind": "function",
+      "pattern": "48 85 D2 0F 84 ? ? ? ? 48 89 5C 24 ? 56 48 83 EC 50 83 79 10 00 48 8B F2 48 89 6C 24 ? 48 8B D9 48 89 7C 24 ? 48 8D 3D ? ? ? ? 74 06 48 8B 51 08 EB 03 48 8B D7 0F B7 41 38 44 0F B7 49 ? 44 8B 41 28 66 89 44 24 ? 0F B7 41 36",
+      "offset": 0,
+      "purpose": "void (TagAssistModifier*, PlayerInfo*) queue assist character for loading",
+      "_verify": {
+        "id": "design",
+        "kind": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "pattern": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "offset": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "purpose": "design",
+        "found_in_running_game": "UNVERIFIED: pattern scan result is logged to BeastBoy.log at launch"
+      }
+    },
+    {
+      "id": "TagAssist_ActivateObject",
+      "kind": "function",
+      "pattern": "48 85 D2 74 33 53 48 83 EC 20 48 8B 02 48 8B CA 48 8B DA FF 50 58 48 8B C8 48 8D 15 ? ? ? ? E8 ? ? ? ? 85 C0 74 0A C7 83",
+      "offset": 0,
+      "purpose": "void (TagAssistModifier*, MKCharacter*) attach assist to spawned fighter",
+      "_verify": {
+        "id": "design",
+        "kind": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "pattern": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "offset": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "purpose": "design",
+        "found_in_running_game": "UNVERIFIED: pattern scan result is logged to BeastBoy.log at launch"
+      }
+    },
+    {
+      "id": "LoadModifierAssets",
+      "kind": "function",
+      "pattern": "40 55 56 57 41 56 41 57 48 8B EC 48 81 EC ? ? ? ? 48 C7 45 ? ? ? ? ? 48 89 9C 24 ? ? ? ? 48 8B F9 45 33 FF",
+      "offset": 0,
+      "purpose": "void (FGGameInfo*) load queued assist assets",
+      "_verify": {
+        "id": "design",
+        "kind": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "pattern": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "offset": "I2Hook PatternSolver.cpp (ermaccer/I2Hook @2ffc5be, latest Steam build)",
+        "purpose": "design",
+        "found_in_running_game": "UNVERIFIED: pattern scan result is logged to BeastBoy.log at launch"
+      }
+    }
+  ]
+}
