@@ -1,0 +1,96 @@
+{
+  "sheet": "config",
+  "about": "One row per setting written to BeastBoy.ini. Defaults come from the other sheets.",
+  "columns": [
+    "id",
+    "section",
+    "default",
+    "from"
+  ],
+  "rows": [
+    {
+      "id": "Enabled",
+      "section": "General",
+      "default": "1",
+      "from": "design",
+      "_verify": {
+        "id": "design",
+        "section": "design",
+        "default": "design",
+        "from": "design"
+      }
+    },
+    {
+      "id": "LogFile",
+      "section": "General",
+      "default": "BeastBoy.log",
+      "from": "design",
+      "_verify": {
+        "id": "design",
+        "section": "design",
+        "default": "design",
+        "from": "design"
+      }
+    },
+    {
+      "id": "LookModifier",
+      "section": "BeastBoy",
+      "default": "=characters.BeastBoy.lookModifier",
+      "from": "characters.BeastBoy.lookModifier",
+      "_verify": {
+        "id": "design",
+        "section": "design",
+        "default": "sheet ref",
+        "from": "sheet ref"
+      }
+    },
+    {
+      "id": "BaseCharacter",
+      "section": "BeastBoy",
+      "default": "=characters.BeastBoy.baseCharacterMatch",
+      "from": "characters.BeastBoy.baseCharacterMatch",
+      "_verify": {
+        "id": "design",
+        "section": "design",
+        "default": "sheet ref",
+        "from": "sheet ref"
+      }
+    },
+    {
+      "id": "GorillaSlamDurationMs",
+      "section": "GorillaSlam",
+      "default": "=morphs.GorillaSlam.durationMs",
+      "from": "morphs.GorillaSlam.durationMs",
+      "_verify": {
+        "id": "design",
+        "section": "design",
+        "default": "sheet ref",
+        "from": "sheet ref"
+      }
+    },
+    {
+      "id": "GorillaSlamCooldownMs",
+      "section": "GorillaSlam",
+      "default": "=morphs.GorillaSlam.cooldownMs",
+      "from": "morphs.GorillaSlam.cooldownMs",
+      "_verify": {
+        "id": "design",
+        "section": "design",
+        "default": "sheet ref",
+        "from": "sheet ref"
+      }
+    },
+    {
+      "id": "GorillaSlamKey",
+      "section": "GorillaSlam",
+      "default": "=morphs.GorillaSlam.key",
+      "from": "morphs.GorillaSlam.key",
+      "_verify": {
+        "id": "design",
+        "section": "design",
+        "default": "sheet ref",
+        "from": "sheet ref"
+      }
+    }
+  ]
+}
